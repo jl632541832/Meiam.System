@@ -1,5 +1,6 @@
-### Meiam.System - NET Core 3.1 WebAPI + Vue 2.0 + RBAC 企业级前后端分离权限框架
+### Meiam.System - .NET 5 / .NET Core 3.1 WebAPI + Vue 2.0 + RBAC 企业级前后端分离权限框架
 
+[![.NET 5](https://img.shields.io/badge/.NET-5.0-d.svg)](#)
 [![.NET CORE](https://img.shields.io/badge/.NET%20Core-3.1-d.svg)](#)
 [![VUE](https://img.shields.io/badge/VUE-2.6.10-d.svg)](#) 
 [![SqlSugar](https://img.shields.io/badge/SqlSugar-5.0-d.svg)](#)
@@ -13,9 +14,13 @@
 
 &nbsp;
 
+分支说明
+
+master -  .NET 5    /   netcore31 - .NET Core 3.1
+
 ###  演示地址:   https://demo.meiam.top/
 
-运行环境 ： CENTOS7 + MYSQL  -  后台用户 9999 密码 123456
+运行环境 ： CENTOS7 / .NET 5 / MYSQL  -  后台用户 9999 密码 123456
 
 
 &nbsp;
