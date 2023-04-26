@@ -2,6 +2,9 @@
 
 Meiam.System 前端源码
 
+[![NODE](https://img.shields.io/badge/NODE-14.x.x-d.svg)](#)
+[![NPM](https://img.shields.io/badge/NPM-6.14.x-d.svg)](#)
+
 #### 前端模板
 
 初始模板基于： [https://github.com/elunez/eladmin-web](https://github.com/elunez/eladmin-web)
@@ -16,7 +19,7 @@ npm config set registry https://registry.npm.taobao.org
 # 安装依赖
 npm install
 
-# 启动服务 localhost:18888
+# 启动服务 localhost:8013
 npm run dev
 
 # 构建生产环境
@@ -55,12 +58,14 @@ npm run build
     "prettier": {
       "semi": false, //分号,默认为true
       "singleQuote": true, //单引号
+      //禁止随时添加逗号,这个很重要。找了好久
+      "trailingComma": "none"
     },
     "js-beautify-html": {
       "wrap_attributes": "auto",
       // Wrap attributes to new lines [auto|force|force-aligned|force-expand-multiline] ["auto"]
     }
-  }
+  },
 }
 
 ``` 
