@@ -8,10 +8,12 @@
 *
 * ==============================================================================
 */
+using SkiaSharp;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Meiam.System.Common.Utilities
 {
@@ -64,29 +66,33 @@ namespace Meiam.System.Common.Utilities
         public static CaptchaResult GenerateCaptchaImage(string captchaCode, int width = 0, int height = 30)
         {
             //验证码颜色集合
-            Color[] c = { Color.Black, Color.Red, Color.DarkBlue, Color.Green, Color.Orange, Color.Brown, Color.DarkCyan, Color.Purple };
+            SKColor[] c = { SKColors.Black, SKColors.Red, SKColors.DarkBlue, SKColors.Green, SKColors.Orange, SKColors.Brown, SKColors.DarkCyan, SKColors.Purple };
 
             //验证码字体集合
-            string[] fonts = { "Verdana", "Microsoft Sans Serif", "Comic Sans MS", "Arial" };
+            string[] fonts = { "Verdana", "Arial" };
 
             //定义图像的大小，生成图像的实例
-            var image = new Bitmap(width == 0 ? captchaCode.Length * 25 : width, height);
 
-            var g = Graphics.FromImage(image);
+
+            //定义图像的大小，生成图像的实例
+            var image = new SKBitmap(width == 0 ? captchaCode.Length * 25 : width, height);
+            var canvas = new SKCanvas(image);
 
             //背景设为白色
-            g.Clear(Color.White);
+            canvas.Clear(SKColors.White);
 
             var random = new Random();
 
+            //绘制噪点
             for (var i = 0; i < 100; i++)
             {
                 var x = random.Next(image.Width);
                 var y = random.Next(image.Height);
-                g.DrawRectangle(new Pen(Color.LightGray, 0), x, y, 1, 1);
+
+                canvas.DrawRect(new SKRect(x, y, x + 2, y + 2), new SKPaint { Color = SKColors.LightGray });
             }
 
-            //验证码绘制在g中  
+            //验证码绘制  
             for (var i = 0; i < captchaCode.Length; i++)
             {
                 //随机颜色索引值 
@@ -95,24 +101,42 @@ namespace Meiam.System.Common.Utilities
                 //随机字体索引值 
                 var findex = random.Next(fonts.Length);
 
-                //字体 
-                var f = new Font(fonts[findex], 15, FontStyle.Bold);
 
-                //颜色  
-                Brush b = new SolidBrush(c[cindex]);
+                //颜色
+                var color = c[cindex];
+
+                //字体
+                var fontFamily = SKTypeface.FromFamilyName(fonts[findex], SKFontStyleWeight.Bold, SKFontStyleWidth.Normal, SKFontStyleSlant.Upright);
+                var fontSize = 20;
+
+                var paint = new SKPaint {  Color = color , Typeface = fontFamily, TextSize = fontSize };
 
                 var ii = 4;
                 if ((i + 1) % 2 == 0)
                     ii = 2;
 
-                //绘制一个验证字符  
-                g.DrawString(captchaCode.Substring(i, 1), f, b, 17 + (i * 17), ii);
+                //绘制一个验证字符
+                canvas.DrawText(captchaCode.Substring(i, 1), 17 + (i * 17), ii + fontSize, paint);
+
+            }
+
+            //随机画5条线
+            for (int i = 0; i < 5; i++)
+            {
+                canvas.DrawLine(new SKPoint(random.Next(image.Width), random.Next(image.Height)), new SKPoint(random.Next(image.Width), random.Next(image.Height)),
+                    new SKPaint() { Color = SKColor.FromHsv(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)) });
             }
 
             var ms = new MemoryStream();
-            image.Save(ms, ImageFormat.Png);
 
-            g.Dispose();
+            using (var captchaImage = SKImage.FromBitmap(image))
+            {
+                captchaImage.Encode(SKEncodedImageFormat.Png, 100).SaveTo(ms);
+            }
+            
+
+
+            canvas.Dispose();
             image.Dispose();
 
             return new CaptchaResult { CaptchaGUID = Guid.NewGuid().ToString().ToUpper(),  CaptchaCode = captchaCode, CaptchaMemoryStream = ms, Timestamp = DateTime.Now };
