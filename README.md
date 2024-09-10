@@ -1,9 +1,8 @@
-### Meiam.System - .NET 7 / .NET 5 WebAPI + Vue 2.0 + RBAC 企业级前后端分离权限框架
+### Meiam.System - .NET 8 / .NET 5 WebAPI + Vue 2.0 + RBAC 企业级前后端分离权限框架
 
-[![.NET 7](https://img.shields.io/badge/.NET-7.0-d.svg)](#)
-[![.NET 5](https://img.shields.io/badge/.NET-5.0-d.svg)](#)
+[![.NET 7](https://img.shields.io/badge/.NET-8.0-d.svg)](#)
 [![VUE](https://img.shields.io/badge/VUE-2.6.10-d.svg)](#) 
-[![SqlSugar](https://img.shields.io/badge/SqlSugar-5.0-d.svg)](#)
+[![SqlSugar](https://img.shields.io/badge/SqlSugar-5.1-d.svg)](#)
 [![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Win%20%7C%20OSX-brightgreen.svg)](#)
 [![LICENSE](https://img.shields.io/badge/license-Apache%202-blue)](#)
 [![Star](https://img.shields.io/github/stars/91270/Meiam.System?label=Star%20this%20repo)](https://github.com/91270/Meiam.System)
@@ -11,29 +10,37 @@
 [![博客](https://img.shields.io/badge/博客-Meiam's%20Home-brightgreen.svg)](https://www.592.la/)
 
 
-
 &nbsp;
 
 分支说明
 
-master -  .NET 7    /   net5 - .NET 5
-
+master -  .NET 8    /   net5 - .NET 5
 
 ###  演示地址:   https://demo.meiam.top
 
-运行环境 ： CENTOS7 / .NET 5 / MYSQL
+运行环境 ： CENTOS7 / .NET 8 / MYSQL
 
 后台用户 9999 密码 123456
 
+&nbsp;
 
 
+## 给个星星! ⭐️
+
+如果你喜欢这个项目或者它帮助你, 请给 Star~（辛苦咯）
+
+如果你能赞助稳定 Google Drive 团队盘用于媒体库插件测试, 请于我联系 91270#QQ.COM 
 
 &nbsp;
 
-## 给个星星! ⭐️
-如果你喜欢这个项目或者它帮助你, 请给 Star~（辛苦咯）
 
+## 广告时间 📣
 
+搬瓦工 $99 年付, 建站神器重出江湖，THE PLAN V1 传家宝套餐，18机房随意切换  
+
+循环优惠码：BWHCCNCXVV（6.77%）
+
+[直达通道(传家宝套餐)](https://bwh88.net/aff.php?aff=117&pid=147)
 
 &nbsp;
 
